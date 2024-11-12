@@ -1,8 +1,8 @@
 // 1. Faça um programa que peça uma nota, entre zero e dez. Mostre uma mensagem caso o valor seja inválido e continue pedindo até que o usuário informe um valor válido.
-let nota = prompt("Digite uma nota entre 0 e 10:");
+let nota = parseInt(prompt("Digite uma nota entre 0 e 10: "));
 
 while (nota < 0 || nota > 10 || isNaN(nota)) {
-    alert("Nota inválida! Por favor, insira um valor entre 0 e 10.");
+    alert("Nota inválida. Por favor, insira novamente um valor entre 0 e 10");
     nota = prompt("Digite uma nota entre 0 e 10:");
 }
 alert("Nota válida! Você digitou: " + nota);
@@ -11,20 +11,36 @@ for (let i = 1; i <= 100; i++) {
     console.log(i);
 }
 // 3. Faça um programa que leia um nome de usuário e a sua senha e não aceite a senha igual ao nome do usuário, mostrando uma mensagem de erro e voltando a pedir as informações.
-let usuario = prompt("Digite o nome de usuário:");
-let senha = prompt("Digite a senha:");
+let usuario = prompt("Usuário: ");
+let senha = prompt("Senha: ");
 
 while (senha === usuario) {
-    alert("Erro: A senha não pode ser igual ao nome de usuário.");
-    usuario = prompt("Digite o nome de usuário novamente:");
-    senha = prompt("Digite a senha novamente:");
+    alert("Erro: A senha não pode ser igual ao nome do usuário. ");
+    usuario = prompt("Digite o nome do usuário novamente: ");
+    senha = prompt("Digite a senha novamente: ");
 }
 alert("Cadastro realizado com sucesso!");
 // 4. Faça um programa que leia e valide as seguintes informações:
 // a. Nome: maior que 3 caracteres;
+let nome;
+do {
+  nome = prompt("Qual seu nome?");
+} while (nome.length <= 3);
 // b. Idade: entre 0 e 150;
+let idade;
+do {
+  idade = parseInt(prompt("Digite sua idade: "));
+} while (is(idade) || idade < 0 || idade > 150);
 // c. Salário: maior que zero;
+let salario;
+do {
+  salario = parseFloat(prompt("Digite seu salário (maior que 0):"));
+} while (is(salario) || salario <= 0);
 // d. Sexo: 'f' ou 'm';
+let sexo;
+do {
+  sexo = prompt("Digite seu sexo ('f' para feminino ou 'm' para masculino):");
+} while (sexo !== 'f' && sexo !== 'F' && sexo !== 'm' && sexo !== 'M')
 // e. Estado Civil: 's', 'c', 'v', 'd';
 // Dica: se sua variável é texto, o tamanho dela está armazenado em: texto.length
 // 5. Supondo que a população de um país A seja da ordem de 80000 habitantes com uma taxa anual
