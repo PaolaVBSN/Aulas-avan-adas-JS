@@ -48,11 +48,77 @@ do {
 // crescimento de 1.5%. Faça um programa que calcule e escreva o número de anos necessários para
 // que a população do país A ultrapasse ou iguale a população do país B, mantidas as taxas de
 // crescimento.
+let populacaoA = 80000;
+let populacaoB = 200000;
+let taxaCrescimentoA = 0.03;
+let taxaCrescimentoB = 0.015; 
+let anos = 0;
+while (populacaoA <= populacaoB) {
+    populacaoA += populacaoA * taxaCrescimentoA;
+    populacaoB += populacaoB * taxaCrescimentoB;
+    anos++;
+}
+console.log(`Serão necessários ${anos} anos para que a população do país A ultrapasse ou iguale a população do país B.`);
 // 6. Altere o programa anterior permitindo ao usuário informar as populações e as taxas de
 // crescimento iniciais. Valide a entrada e permita repetir a operação.
+//Ajuda ao chatGPT
+function calcularCrescimento() {
+    const prompt = require("prompt-sync")(); // Biblioteca para entrada de dados (instale com `npm install prompt-sync`)
+    let repetir;
+    do {
+        console.log("\n==== Cálculo de Crescimento Populacional ====");
+        // Entrada de dados
+        let populacaoA = parseFloat(prompt("Informe a população inicial do país A: "));
+        let taxaCrescimentoA = parseFloat(prompt("Informe a taxa de crescimento anual (%) do país A: "));
+        let populacaoB = parseFloat(prompt("Informe a população inicial do país B: "));
+        let taxaCrescimentoB = parseFloat(prompt("Informe a taxa de crescimento anual (%) do país B: "));
+        // Validação dos dados
+        if (isNaN(populacaoA) || isNaN(taxaCrescimentoA) || isNaN(populacaoB) || isNaN(taxaCrescimentoB) ||
+            populacaoA <= 0 || taxaCrescimentoA <= 0 || populacaoB <= 0 || taxaCrescimentoB <= 0) {
+            console.log("Por favor, insira valores válidos e positivos.");
+            continue;
+        }
+        // Conversão de taxas para decimais
+        taxaCrescimentoA /= 100;
+        taxaCrescimentoB /= 100;
+        let anos = 0;
+        // Cálculo do crescimento populacional
+        while (populacaoA <= populacaoB) {
+            populacaoA += populacaoA * taxaCrescimentoA;
+            populacaoB += populacaoB * taxaCrescimentoB;
+            anos++;
+        }
+        console.log(`\nSerá necessário ${anos} anos para que a população do país A ultrapasse ou iguale a população do país B.`);
+        // Perguntar se o usuário deseja repetir
+        repetir = prompt("\nDeseja realizar outro cálculo? (s/n): ").toLowerCase();
+    } while (repetir === "s");
+    console.log("Programa encerrado. Até mais!");
+}
+calcularCrescimento();
 // 7. Faça um programa que imprima na tela os números de 1 a 20, um abaixo do outro. Depois
 // modifique o programa para que ele mostre os números um ao lado do outro.
+for (let i = 1; i <= 20; i++) {
+    console.log(i);
+}
+let numeros = "";
+for (let i = 1; i <= 20; i++) {
+    numeros += i + " "; 
+}
+console.log(numeros()); 
 // 8. Faça um programa que leia 5 números e informe o maior número.
+let maiorNumero = Number.NEGATIVE_INFINITY;
+console.log("Informe 5 números:");
+for (let i = 1; i <= 5; i++) {
+    let numero = parseFloat(prompt(`Digite o número ${i}: `));
+    if (isNaN(numero)) {
+        console.log("Entrada inválida! Digite apenas números.");
+        i--;
+    }
+    if (numero > maiorNumero) {
+        maiorNumero = numero; // Atualiza o maior número
+    }
+}
+console.log(`O maior número informado foi: ${maiorNumero}`);
 // 9. Faça um programa que leia 5 números e informe a soma e a média dos números.
 // 10. Faça um programa que imprima na tela apenas os números ímpares entre 1 e 50.
 // 11. Faça um programa que receba dois números inteiros e gere os números inteiros que estão no
