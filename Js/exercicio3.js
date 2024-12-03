@@ -120,10 +120,32 @@ for (let i = 1; i <= 5; i++) {
 }
 console.log(`O maior número informado foi: ${maiorNumero}`);
 // 9. Faça um programa que leia 5 números e informe a soma e a média dos números.
+let soma = 0;
+let numeros = [];
+for (let i = 0; i < 5; i++) {
+    let numero = parseFloat(prompt(`Digite o número ${i + 1}:`));
+    numeros.push(numero);
+    soma += numero;
+}
+let media = soma / numeros.length;
+console.log(`A soma dos números é: ${soma}`);
+console.log(`A média dos números é: ${media}`);
+
 // 10. Faça um programa que imprima na tela apenas os números ímpares entre 1 e 50.
+for (let i = 1; i <= 50; i++) {
+    if (i % 2 !== 0) {
+        console.log(i); 
+    }
+}
 // 11. Faça um programa que receba dois números inteiros e gere os números inteiros que estão no
 // intervalo compreendido por eles.
+let num1 = parseInt(prompt("Digite o primeiro número inteiro:"));
+let num2 = parseInt(prompt("Digite o segundo número inteiro:"));
 // 12. Altere o programa anterior para mostrar no final a soma dos números.
+let inicio = Math.min(num1, num2);
+let fim = Math.max(num1, num2);
+let soma = 0;
+
 // 13. Desenvolva um gerador de tabuada, capaz de gerar a tabuada de qualquer número inteiro
 // entre 1 a 10. O usuário deve informar de qual numero ele deseja ver a tabuada. A saída deve ser
 // conforme o exemplo abaixo:
@@ -133,11 +155,38 @@ console.log(`O maior número informado foi: ${maiorNumero}`);
 // ...
 // 5 X 10 = 50
 // b. Como fazer a tabuada
+let numero = parseInt(prompt("Digite um número inteiro entre 1 e 10 para gerar a tabuada:"));
+if (numero >= 1 && numero <= 10) {
+    console.log(`Tabuada de ${numero}:`);
+    for (let i = 1; i <= 10; i++) {
+        console.log(`${numero} X ${i} = ${numero * i}`);
+    }
+} else {
+    console.log("Por favor, insira um número entre 1 e 10.");
+}
 // 14. Faça um programa que peça dois números, base e expoente, calcule e mostre o primeiro
 // número elevado ao segundo número. Não utilize a função de potência da linguagem.
-
+let base = parseInt(prompt("Digite a base (um número inteiro):"));
+let expoente = parseInt(prompt("Digite o expoente (um número inteiro):"));
+let resultado = 1;
+for (let i = 1; i <= Math.abs(expoente); i++) {
+    resultado *= base;
+}
+console.log(`${base} elevado a ${expoente} é igual a ${resultado}`);
 // 15. Faça um programa que peça 10 números inteiros, calcule e mostre a quantidade de números
 // pares e a quantidade de números ímpares.
+let pares = 0;
+let impares = 0;
+for (let i = 1; i <= 10; i++) {
+    let numero = parseInt(prompt(`Digite o ${i}º número inteiro:`));
+    if (numero % 2 === 0) {
+        pares++;
+    } else {
+        impares++;
+    }
+}
+console.log(`Quantidade de números pares: ${pares}`);
+console.log(`Quantidade de números ímpares: ${impares}`);
 // 16. A série de Fibonacci é formada pela sequência 1,1,2,3,5,8,13,21,34,55,... Faça um programa
 // capaz de gerar a série até o n−ésimo termo.
 // Sequência de Fibonacci com laços
@@ -148,30 +197,138 @@ console.log(`O maior número informado foi: ${maiorNumero}`);
 // Calcular fatorial com laços
 // 19. Faça um programa que, dado um conjunto de N números, determine o menor valor, o maior
 // valor e a soma dos valores.
+let n = parseInt(prompt("Quantos números você deseja informar?"));
+let menor = Infinity;
+let maior = -Infinity;
+let soma = 0;
+for (let i = 1; i <= n; i++) {
+    let numero = parseFloat(prompt(`Digite o ${i}º número:`));
+    if (numero < menor) {
+        menor = numero;
+    }
+    if (numero > maior) {
+        maior = numero;
+    }
+    soma += numero;
+}
+console.log(`Menor valor: ${menor}`);
+console.log(`Maior valor: ${maior}`);
+console.log(`Soma dos valores: ${soma}`);
 // 20. Altere o programa anterior para que ele aceite apenas números entre 0 e 1000.
+let n = parseInt(prompt("Quantos números você deseja informar?"));
+
 // 21. Altere o programa de cálculo do fatorial, permitindo ao usuário calcular o fatorial várias vezes
 // e limitando o fatorial a números inteiros positivos e menores que 16.
 // 22. Faça um programa que peça um número inteiro e determine se ele é ou não um número primo.
 // Um número primo é aquele que é divisível somente por ele mesmo e por 1.
 // Números primos com laços
+let numero = parseInt(prompt("Digite um número inteiro:"));
+function verificarPrimo(num) {
+    if (num <= 1) {
+        return false;
+    }
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) {
+            return false; 
+        }
+    }
+    return true; 
+}
+if (verificarPrimo(numero)) {
+    console.log(`${numero} é um número primo.`);
+} else {
+    console.log(`${numero} não é um número primo.`);
+}
 // 23. Altere o programa de cálculo dos números primos, informando, caso o número não seja primo,
 // por quais número ele é divisível.
+let numero = parseInt(prompt("Digite um número inteiro:"));
 // 24. Faça um programa que mostre todos os primos entre 1 e N sendo N um número inteiro
 // fornecido pelo usuário. O programa deverá mostrar também o número de divisões que ele
 // executou para encontrar os números primos. Serão avaliados o funcionamento, o estilo e o
 // número de testes (divisões) executados.
+// Solicita o número N ao usuário
+//Ajuda do chatgpt
+let N = parseInt(prompt("Digite um número inteiro N:"));
+function verificarPrimo(num) {
+    if (num <= 1) {
+        return false;
+    }
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) {
+            return false;
+        }
+    }
+    return true;
+}
+console.log(`Números primos entre 1 e ${N}:`);
+for (let i = 1; i <= N; i++) {
+    if (verificarPrimo(i)) {
+        console.log(i);
+    }
+}
 // 25. Faça um programa que calcule o mostre a média aritmética de N notas.
+let N = parseInt(prompt("Digite o número de notas:"));
+let somaNotas = 0;
+for (let i = 1; i <= N; i++) {
+    let nota = parseFloat(prompt(`Digite a ${i}ª nota:`));
+    somaNotas += nota;
+}
+let media = somaNotas / N;
+console.log(`A média aritmética das notas é: ${media}`);
 // 26. Faça um programa que peça para n pessoas a sua idade, ao final o programa devera verificar
 // se a média de idade da turma varia entre 0 e 25,26 e 60 e maior que 60; e então, dizer se a turma
 // é jovem, adulta ou idosa, conforme a média calculada.
+let n = parseInt(prompt("Digite o número de pessoas:"));
+let somaIdades = 0;
+for (let i = 1; i <= n; i++) {
+    let idade = parseInt(prompt(`Digite a idade da ${i}ª pessoa:`));
+    somaIdades += idade;
+}
+let mediaIdades = somaIdades / n;
+let faixaEtaria;
+if (mediaIdades >= 0 && mediaIdades <= 25) {
+    faixaEtaria = "jovem";
+} else if (mediaIdades >= 26 && mediaIdades <= 60) {
+    faixaEtaria = "adulta";
+} else if (mediaIdades > 60) {
+    faixaEtaria = "idosa";
+} else {
+    faixaEtaria = "faixa etária inválida";
+}
+console.log(`A média de idade da turma é: ${mediaIdades.toFixed(2)}`);
 // 27. Numa eleição existem três candidatos. Faça um programa que peça o número total de
 // eleitores. Peça para cada eleitor votar e ao final mostrar o número de votos de cada candidato.
+let totalEleitores = parseInt(prompt("Digite o número total de eleitores:"));
+let votosCandidato1 = 0;
+let votosCandidato2 = 0;
+let votosCandidato3 = 0;
+for (let i = 1; i <= totalEleitores; i++) {
+    let voto = parseInt(prompt(`Eleitor ${i}: Digite o número do candidato (1, 2 ou 3):`));
+    
 // 28. Faça um programa que calcule o número médio de alunos por turma. Para isto, peça a
 // quantidade de turmas e a quantidade de alunos para cada turma. As turmas não podem ter mais
 // de 40 alunos.
+let somaAlunos = 0;
+let turmasValidas = 0;
+for (let i = 1; i <= quantidadeTurmas; i++) {
+    let alunos = parseInt(prompt(`Digite a quantidade de alunos na ${i}ª turma:`));
+    if (alunos <= 40) {
+        somaAlunos += alunos;
+        turmasValidas++;
+    } else {
+        console.log("Número de alunos inválido! O máximo permitido é 40.");
 // 29. Faça um programa que calcule o valor total investido por um colecionador em sua coleção de
 // CDs e o valor médio gasto em cada um deles. O usuário deverá informar a quantidade de CDs e o
 // valor para em cada um.
+let quantidadeCDs = parseInt(prompt("Digite a quantidade de CDs na coleção:"));
+let valorTotal = 0;
+for (let i = 1; i <= quantidadeCDs; i++) {
+    let valorCD = parseFloat(prompt(`Digite o valor do ${i}º CD:`));
+    valorTotal += valorCD; 
+}
+let valorMedio = valorTotal / quantidadeCDs;
+console.log(`O valor total investido na coleção é: R$ ${valorTotal.toFixed(2)}`);
+console.log(`O valor médio gasto por CD é: R$ ${valorMedio.toFixed(2)}`);
 // 30. O Sr. Manoel Joaquim possui uma grande loja de artigos de R$ 1,99, com cerca de 10 caixas.
 // Para agilizar o cálculo de quanto cada cliente deve pagar ele desenvolveu um tabela que contém o
 // número de itens que o cliente comprou e ao lado o valor da conta. Desta forma a atendente do
